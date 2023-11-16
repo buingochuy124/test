@@ -19,7 +19,7 @@ function App() {
   let data = new FormData();
   data.append('reaction_type', '"like"');
   data.append('value', '1');
-  data.append('wish_id', '2792140873');
+  data.append('wish_id', '2760482025');
 
   let config = {
     method: 'post',
@@ -40,7 +40,7 @@ function App() {
     });
 
   useEffect(() => {
-    for (let index = 0; index < 500; index++) {
+    for (let index = 0; index < 50; index++) {
       axios.request(config)
         .then((response) => {
           console.log(JSON.stringify(response.data));
