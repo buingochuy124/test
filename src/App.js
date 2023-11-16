@@ -19,7 +19,7 @@ function App() {
     let data = new FormData();
     data.append('reaction_type', '"like"');
     data.append('value', '1');
-    data.append('wish_id', '2791924036');
+    data.append('wish_id', '2790670557');
 
     let config = {
       method: 'post',
