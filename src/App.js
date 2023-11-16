@@ -4,52 +4,52 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [token,setToken] = useState("9718151f0627679b306aee4739aad204eb6fe9fe826e651c6440c36c8401ffa311")
+  const [token, setToken] = useState("9718151f0627679b306aee4739aad204eb6fe9fe826e651c6440c36c8401ffa311")
 
-  const  a = () => {
-      let res = token.charAt(token.length - 1);
-      
+  const a = () => {
+    let res = token.charAt(token.length - 1);
 
-      let text = token.replace(res, ((parseInt(res)+1)));
 
-      setToken(text);
+    let text = token.replace(res, ((parseInt(res) + 1)));
+
+    setToken(text);
   }
   const axios = require('axios');
-    const FormData = require('form-data');
-    let data = new FormData();
-    data.append('reaction_type', '"like"');
-    data.append('value', '1');
-    data.append('wish_id', '2790670557');
+  const FormData = require('form-data');
+  let data = new FormData();
+  data.append('reaction_type', '"like"');
+  data.append('value', '1');
+  data.append('wish_id', '2790670557');
 
-    let config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'https://padlet.com/api/5/reactions',
-      headers: { 
-        Authorization: `Bearer ${token}`,
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: 'https://padlet.com/api/5/reactions',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    data: data
+  };
 
-  
-      },
-      data : data
-    };
-    
-    axios.request(config)
+  axios.request(config)
     .then((response) => {
       console.log(JSON.stringify(response.data));
     })
     .catch((error) => {
       console.log(error);
     });
-    
+
   useEffect(() => {
-  
-    axios.request(config)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    for (let index = 0; index < 500; index++) {
+      axios.request(config)
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
 
 
 
@@ -72,17 +72,17 @@ function App() {
     //   .catch((error) => {
     //     console.log("fail");
     //   });
-  
-  },[token]);
+
+  }, [token]);
 
 
 
   return (
     <div className="App">
       <header className="App-header">
-          <button  onClick={a}>
-              test
-          </button>
+        <button onClick={a}>
+          test
+        </button>
       </header>
     </div>
   );
